@@ -27,7 +27,7 @@ Write-Debug "SOAP Request: action [$soap_action] at [$soap_url]"
 $headers | %{Write-Debug $_}
 Write-Debug $payload
 
-$response = Invoke-WebRequest -ContentType "text/xml" -Method "Post" -Headers $headers -Body $payload -Uri $soap_url
+$response = Invoke-WebRequest -ContentType "text/xml" -Method "Post" -Headers $headers -Body $payload -Uri $soap_url -UseBasicParsing
 
 if (200 -eq $response.StatusCode) {
     $content = New-Object System.Xml.XmlDocument
